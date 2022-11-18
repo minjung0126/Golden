@@ -50,7 +50,7 @@
                 공간 선택
               </a>
               <ul class="dropdown-menu dropdown-menu-dark" >
-                <li th:each="list : ${ spaceList }"><a class="dropdown-item" id="selectSpace" th:href="'/space/theater/number?spaceNum=' + ${ list.spaceNum }" th:text="${ list.spaceName }"></a><input type="hidden" class="sNumber" th:value="${ list.spaceNum }"></li>
+                <li th:if="${!#lists.isEmpty(spaceList)}" th:each="list : ${ spaceList }"><a class="dropdown-item" id="selectSpace" th:href="'/space/theater/number?spaceNum=' + ${ list.spaceNum }" th:text="${ list.spaceName }"></a><input type="hidden" class="sNumber" th:value="${ list.spaceNum }"></li>
               </ul>
             </li>
           </ul>
@@ -63,7 +63,7 @@
   <!-- 이미지 슬라이드 (캐러셀)-->
   <div id="carouselExampleIndicators" class="carousel slide row mt-7 mx-auto" data-bs-ride="true" style="padding-left: 20%; padding-right: 20%; padding-top: 2rem;">
     <div class="carousel-inner">
-      <div class="carousel-item active" th:each="space : ${ spacePhoList }">
+      <div class="carousel-item active" th:if="${!#lists.isEmpty(spacePhoList)}" th:each="space : ${ spacePhoList }">
         <img th:src="'/upload/space/' + ${ space.spaceFileName }" class="d-block w-100 h-30" alt="#">
       </div>
     </div>
@@ -80,7 +80,7 @@
   <br>
   <br><br>
   <br>
-  <div class="row mt-7 mx-auto" style="padding-left: 20%; padding-right: 20%; padding-top: 2rem;" th:each="view : ${ spaceView }">
+  <div class="row mt-7 mx-auto" style="padding-left: 20%; padding-right: 20%; padding-top: 2rem;" th:if="${!#lists.isEmpty(spaceView)}" th:each="view : ${ spaceView }">
     <h4 style="color: white" th:text="${ view.spaceName }"></h4>
   </div>
   <div class="row mt-7 mx-auto" style="padding-left: 20%; padding-right: 20%; padding-top: 1rem;">
@@ -99,7 +99,7 @@
       </tr>
       <tr>
         <th>공간소개</th>
-        <td th:text="${ view.spaceContent }">여러명이 사용하는 공간입니다. 주의해주세요.</td>
+        <td th:text="${ view.spaceContent }"></td>
       </tr>
       <tr>
         <th>예약링크</th>
