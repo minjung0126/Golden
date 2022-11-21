@@ -144,8 +144,8 @@ public class SpaceController {
 
         int spaceNum = Integer.parseInt(request.getParameter("spaceNum"));
 
-        int result = spaceService.deleteSpace(spaceNum);
         List<SpacePhoDTO> phoList = spaceService.selectPho(spaceNum);
+        int result = spaceService.deleteSpace(spaceNum);
 
         if(result > 0) {
 
@@ -171,43 +171,13 @@ public class SpaceController {
     }
 
     //사용자 연습실 뷰 화면
+
     @GetMapping("/theater")
-    public ModelAndView theaher(ModelAndView mv){
+    public String theaher(){
 
-        List<SpaceDTO> spaceList = spaceService.selectSpaceListView();
-
-        int spaceNum = spaceList.get(0).getSpaceNum();
-
-        List<SpacePhoDTO> phoList = spaceService.selectPho(spaceNum);
-        SpaceDTO spaceView = spaceService.selectSpaceView(spaceNum);
-
-        mv.addObject("spaceList", spaceList);
-        mv.addObject("spacePhoList", phoList);
-        mv.addObject("spaceView", spaceView);
-        mv.setViewName("space/theater");
-
-        return mv;
+        return "space/theater";
     }
 
-    @GetMapping("/theater/number")
-    public ModelAndView theaherNum(ModelAndView mv, HttpServletRequest request){
-
-        List<SpaceDTO> spaceList = spaceService.selectSpaceListView();
-
-        int spaceNum = Integer.parseInt(request.getParameter("spaceNum"));
-
-        log.info(spaceNum + "뭘가여");
-
-        List<SpacePhoDTO> phoList = spaceService.selectPho(spaceNum);
-        SpaceDTO spaceView = spaceService.selectSpaceView(spaceNum);
-
-        mv.addObject("spaceList", spaceList);
-        mv.addObject("spacePhoList", phoList);
-        mv.addObject("spaceView", spaceView);
-        mv.setViewName("space/theater");
-
-        return mv;
-    }
 
     //관리자 연습실 내용 수정하기
     @GetMapping("/spaceUpdate")
@@ -257,11 +227,28 @@ public class SpaceController {
     @GetMapping("/space/pho/delete")
     public String spacePhoDelete(@ModelAttribute SpacePhoDTO spacePho,
                                  @RequestParam(value="spaceFileNum", required = false) int spaceFileNum,
-                                 @RequestParam(value="spaceNum", required = false) int spaceNum){
+                                 @RequestParam(value="spaceNum", required = false) int spaceNum) throws FileNotFoundException {
 
-
+        List<SpacePhoDTO> phoList = spaceService.selectPho(spaceNum);
         int result = spaceService.deleteSpacePho(spaceFileNum);
 
+        if(result > 0) {
+
+            // 연습실 이미지 삭제
+            String root = ResourceUtils.getURL("upload").getPath();
+
+            String filePath = root + "/space";
+
+            for(int i = 0; i < phoList.size(); i++){
+
+                File mkdirCast = new File(filePath + File.separator + phoList.get(i).getSpaceFileName());
+
+                if(mkdirCast.exists()) {
+
+                    mkdirCast.delete();
+                }
+            }
+        }
 
         return "redirect:/space/spacePhoUpdate?spaceNum=" + spaceNum;
     }

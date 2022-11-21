@@ -171,7 +171,7 @@ public class NoticeController {
         NoticeDTO noticeDetail = noticeService.selectNoticeDetail(noticeNo);
 
         mv.addObject("noticeDetail", noticeDetail);
-        mv.setViewName("/notice/noticeUpdate");
+        mv.setViewName("notice/noticeUpdate");
 
         return mv;
     }
@@ -212,7 +212,6 @@ public class NoticeController {
                 if(notice.getNoticeFile() != null){
 
                     int result2 = noticeService.delelteNoticeFile(noticeNo);
-
 
                     if(result2 > 0) {
 
