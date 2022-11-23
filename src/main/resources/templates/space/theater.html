@@ -28,7 +28,7 @@
 </head>
 <body class="scroll">
 <!-- S: header -->
-<div th:replace="common/header"></div>
+<div th:include="common/header"></div>
 <!-- E: header -->
 <div class="content">
   <div class="d-flex justify-content-center" style="display: inline;background: #ccc;font-family: 'Oswald', sans-serif !important;height: 240px;background: #232321;padding-top: 170px;">
@@ -105,11 +105,6 @@
       </tr>
     </table>
   </div>
-  <th:block sec:authorize="isAuthenticated()">
-    <div style="text-align: center; padding: 20px;">
-      <button class="btn" type="button" style="color:white; padding: 8px 25px 8px 25px; border: solid 1px white; border-radius: 3px; font-size: 1.5em;" th:onclick="'location.href=\'/space/spaceList\''">연습실목록</button>
-    </div>
-  </th:block>
 </div>
 <!— S: footer —>
 <div th:include="common/footer.html"></div>

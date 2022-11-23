@@ -173,9 +173,15 @@ public class SpaceController {
     //사용자 연습실 뷰 화면
 
     @GetMapping("/theater")
-    public String theaher(){
+    public ModelAndView theaher(ModelAndView mv){
 
-        return "space/theater";
+        List<SpaceDTO> spaceList = spaceService.selectSpaceListView();
+
+
+        mv.addObject("spaceList", spaceList);
+        mv.setViewName("space/theater");
+
+        return mv;
     }
 
 
