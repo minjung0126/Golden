@@ -170,7 +170,7 @@
         )
     </insert>
 
-    gitt<select id="selectSpacePhoto" resultMap="spacePhoResultMap">
+    <select id="selectSpacePhoto" resultMap="spacePhoResultMap">
         SELECT
             *
         FROM SPACE_FILE
