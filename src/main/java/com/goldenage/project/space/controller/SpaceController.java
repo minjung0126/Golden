@@ -266,7 +266,7 @@ public class SpaceController {
                                  @RequestParam(value="spaceFileNum", required = false) int spaceFileNum,
                                  @RequestParam(value="spaceNum", required = false) int spaceNum) throws FileNotFoundException {
 
-        SpacePhoDTO photo = spaceService.selectPhoto(spaceNum);
+        SpacePhoDTO photo = spaceService.selectPhoto(spaceFileNum);
         int result = spaceService.deleteSpacePho(spaceFileNum);
 
         String root = ResourceUtils.getURL("upload").getPath();

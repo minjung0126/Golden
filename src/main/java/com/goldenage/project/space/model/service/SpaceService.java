@@ -48,5 +48,5 @@ public interface SpaceService {
     int insertSpacePhoto(SpacePhoDTO spacePhoto);
 
 
-    SpacePhoDTO selectPhoto(int spaceNum);
+    SpacePhoDTO selectPhoto(int spaceFileNum);
 }
