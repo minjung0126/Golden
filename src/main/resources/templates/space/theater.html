@@ -69,7 +69,7 @@
       <!--      <div class="carousel-item active" th:each="space : ${ spacePhoList }">-->
       <!--        <img th:src="'/upload/space/' + ${ space.spaceFileName }" class="d-block w-100 h-30" alt="#">-->
       <!--      </div>-->
-      <div th:each="space : ${ spacePhoList }">
+      <div class="carousel-item active" th:each="space : ${ spacePhoList }">
         <img th:src="'/upload/space/' + ${ space.spaceFileName }" class="d-block w-100 h-30" alt="#">
       </div>
     </div>
