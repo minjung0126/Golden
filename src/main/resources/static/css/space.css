@@ -111,3 +111,7 @@ table td {
         width: 25%;
     }
 }
+
+.carousel-item img{
+    height: 500px;
+}
