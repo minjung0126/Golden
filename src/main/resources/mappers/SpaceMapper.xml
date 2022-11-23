@@ -169,4 +169,11 @@
         , #{ spaceNum }
         )
     </insert>
+
+    gitt<select id="selectSpacePhoto" resultMap="spacePhoResultMap">
+        SELECT
+            *
+        FROM SPACE_FILE
+        WHERE SPACE_NUM = #{ spaceNum }
+    </select>
 </mapper>

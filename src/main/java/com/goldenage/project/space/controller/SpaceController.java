@@ -266,24 +266,19 @@ public class SpaceController {
                                  @RequestParam(value="spaceFileNum", required = false) int spaceFileNum,
                                  @RequestParam(value="spaceNum", required = false) int spaceNum) throws FileNotFoundException {
 
-        List<SpacePhoDTO> phoList = spaceService.selectPho(spaceNum);
+        SpacePhoDTO photo = spaceService.selectPhoto(spaceNum);
         int result = spaceService.deleteSpacePho(spaceFileNum);
 
+        String root = ResourceUtils.getURL("upload").getPath();
+
+        String filePath = root + "/space";
+
         if(result > 0) {
+            File fileDel = new File(filePath + File.separator + photo.getSpaceFileName());
 
-            // 연습실 이미지 삭제
-            String root = ResourceUtils.getURL("upload").getPath();
+            if (fileDel.exists()) {
 
-            String filePath = root + "/space";
-
-            for(int i = 0; i < phoList.size(); i++){
-
-                File mkdirCast = new File(filePath + File.separator + phoList.get(i).getSpaceFileName());
-
-                if(mkdirCast.exists()) {
-
-                    mkdirCast.delete();
-                }
+                fileDel.delete();
             }
         }
 
