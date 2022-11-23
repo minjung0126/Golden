@@ -31,11 +31,11 @@
         <h3 style="color: #fff;">골든에이지 컨택 정보 수정</h3>
         <form id="updateForm" name="updateForm" th:action="@{/company/company_update}" method="post">
         <ul class="contectList">
-            <li><input name="address" type="text" th:placeholder="| 주소 : ${ comInfo.address }|"></li>
-            <li><input name="phone" type="text" th:placeholder="| 전화번호 : ${ comInfo.phone }|"></li>
-            <li><input name="email" type="email" th:placeholder="| 이메일 : ${ comInfo.email }|"></li>
-            <li><input name="instagram" type="url" th:placeholder="| 인스타그램 주소 : ${ comInfo.instagram }|"></li>
-            <li><input name="twitter" type="url" th:placeholder="| 트위터 주소 : ${ comInfo.twitter }|"></li>
+            <li><input name="address" type="text" placeholder="주소" th:value="${ comInfo.address }"></li>
+            <li><input name="phone" type="text" placeholder="전화번호" th:value="${ comInfo.phone }"></li>
+            <li><input name="email" type="email" placeholder="이메일" th:value="${ comInfo.email }"></li>
+            <li><input name="instagram" type="url" placeholder="인스타그램 주소" th:value="${ comInfo.instagram }"></li>
+            <li><input name="twitter" type="url" placeholder="트위터 주소" th:value="${ comInfo.twitter }"></li>
         </ul>
         <div class="text-center py-2">
             <a onclick="correctionForm()" class="btn btn-warning btn-lg text-white" style="font-family: 'Oswald', sans-serif; font-weight: bold;">수정</a>

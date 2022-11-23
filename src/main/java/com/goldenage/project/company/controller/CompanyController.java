@@ -67,7 +67,7 @@ public class CompanyController {
             rttr.addFlashAttribute("message", "회사정보 수정이 완료되었습니다..");
         }
 
-        mv.setViewName("redirect:company/company");
+        mv.setViewName("redirect:company");
 
         return mv;
     }

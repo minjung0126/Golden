@@ -167,11 +167,10 @@
   <div class="nav" id="nav-bar">
     <ul style="margin-bottom: 0px;">
       <li><a th:href="@{/company/company}">회사소개</a></li>
-      <li><a th:href="@{/product/productPage}">제작공연</a></li>
-      <li><a th:href="@{/marketing/list}">홍보공연</a></li>
+      <li><a th:href="@{/product/productPage}">제작</a></li>
+      <li><a th:href="@{/marketing/list}">홍보/마케팅</a></li>
       <li><a th:href="@{/space/theater}">연습실</a></li>
       <li><a th:href="@{/notice/notice}">공지사항</a></li>
-      <li><a th:href="@{/space/spaceList}">관리자연습실</a></li>
       <th:block sec:authorize="isAnonymous()">
         <li><a th:href="@{/admin/loginPage}">로그인</a></li>
       </th:block>
