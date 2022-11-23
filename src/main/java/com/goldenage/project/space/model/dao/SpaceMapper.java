@@ -24,7 +24,6 @@ public interface SpaceMapper {
     List<SpaceDTO> selectSpaceListView();
 
     List<SpacePhoDTO> selectPho(int spaceNum);
-
     SpaceDTO selectSpaceView(int spaceNum);
 
     SpaceDTO selectSpaceIntro(int spaceNum);
@@ -36,4 +35,6 @@ public interface SpaceMapper {
     int deleteSpacePho(int spaceFileNum);
 
     int insertSpacePho(SpacePhoDTO spacePhoto);
+
+
 }

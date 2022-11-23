@@ -46,4 +46,6 @@ public interface SpaceService {
     int deleteSpacePho(int spaceFileNum);
 
     int insertSpacePhoto(SpacePhoDTO spacePhoto);
+
+
 }
