@@ -28,7 +28,7 @@
 </head>
 <body class="scroll">
 <!-- S: header -->
-<div th:replace="common/header"></div>
+<div th:include="common/header"></div>
 <!-- E: header -->
 <div class="content">
   <div class="d-flex justify-content-center" style="display: inline;background: #ccc;font-family: 'Oswald', sans-serif !important;height: 240px;background: #232321;padding-top: 170px;">
@@ -45,11 +45,12 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
           <ul class="navbar-nav">
-            <li class="nav-item dropdown">
+            <li class="nav-item dropdown"  >
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 공간 선택
               </a>
-              <ul class="dropdown-menu dropdown-menu-dark">
+              <ul class="dropdown-menu dropdown-menu-dark" >
+                <li th:each="list : ${ spaceList }"><a class="dropdown-item" id="selectSpace" th:href="'/space/theater/number?spaceNum=' + ${ list.spaceNum }" th:text="${ list.spaceName }"></a><input type="hidden" class="sNumber" th:value="${ list.spaceNum }"></li>
               </ul>
             </li>
           </ul>
@@ -62,8 +63,8 @@
   <!-- 이미지 슬라이드 (캐러셀)-->
   <div id="carouselExampleIndicators" class="carousel slide row mt-7 mx-auto" data-bs-ride="true" style="padding-left: 20%; padding-right: 20%; padding-top: 2rem;">
     <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img class="d-block w-100 h-30" alt="#">
+      <div class="carousel-item active" th:each="space : ${ spacePhoList }">
+        <img th:src="'/upload/space/' + ${ space.spaceFileName }" class="d-block w-100 h-30" alt="#">
       </div>
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -79,35 +80,36 @@
   <br>
   <br><br>
   <br>
-  <div class="row mt-7 mx-auto" style="padding-left: 20%; padding-right: 20%; padding-top: 2rem;">
-    <h4 style="color: white"></h4>
+  <div class="row mt-7 mx-auto" style="padding-left: 20%; padding-right: 20%; padding-top: 2rem;" th:each="view : ${ spaceView }">
+    <h4 style="color: white" th:text="${ view.spaceName }"></h4>
   </div>
   <div class="row mt-7 mx-auto" style="padding-left: 20%; padding-right: 20%; padding-top: 1rem;">
-    <table style="background-color: white">
+    <table style="background-color: white" th:each="view : ${ spaceView }">
       <tr>
         <th>주소</th>
-        <td></td>
+        <td th:text="${ view.spaceAdd }"></td>
       </tr>
       <tr>
         <th>공간넓이</th>
-        <td></td>
+        <td th:text="${ view.spaceWidth }"></td>
       </tr>
       <tr>
         <th>이용시간</th>
-        <td></td>
+        <td th:text="${ view.spaceTime }"></td>
       </tr>
       <tr>
         <th>공간소개</th>
+        <td th:text="${ view.spaceContent }">여러명이 사용하는 공간입니다. 주의해주세요.</td>
       </tr>
       <tr>
         <th>예약링크</th>
-        <td></td>
+        <td th:text="${ view.spaceLink }"></td>
       </tr>
     </table>
   </div>
   <th:block sec:authorize="isAuthenticated()">
     <div style="text-align: center; padding: 20px;">
-      <button class="btn" type="button" style="color:white; padding: 8px 25px 8px 25px; border: solid 1px white; border-radius: 3px; font-size: 1.5em;" th:onclick="'location.href=\'/space/spaceList\''">연습실목록</button>
+      <button class="btn" type="button" style="color:white; padding: 8px 25px 8px 25px; border: solid 1px white; border-radius: 3px; font-size: 1.5em;" onclick="location.href='/space/spaceList'">연습실목록</button>
     </div>
   </th:block>
 </div>

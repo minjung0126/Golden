@@ -173,9 +173,26 @@ public class SpaceController {
     //사용자 연습실 뷰 화면
 
     @GetMapping("/theater")
-    public String theaher(){
+    public ModelAndView theaher(ModelAndView mv){
 
-        return "space/theater";
+        List<SpaceDTO> spaceList = spaceService.selectSpaceListView();
+
+        if(spaceList.isEmpty()){
+
+            mv.setViewName("space/theater");
+        } else {
+
+            int spaceNum = spaceList.get(0).getSpaceNum();
+
+            List<SpacePhoDTO> phoList = spaceService.selectPho(spaceNum);
+            SpaceDTO spaceView = spaceService.selectSpaceView(spaceNum);
+
+            mv.addObject("spaceList", spaceList);
+            mv.addObject("spacePhoList", phoList);
+            mv.addObject("spaceView", spaceView);
+            mv.setViewName("space/theater");
+        }
+        return mv;
     }
 
 
@@ -296,4 +313,3 @@ public class SpaceController {
         return "redirect:/space/spacePhoUpdate?spaceNum=" + spaceNum;
     }
 }
-
