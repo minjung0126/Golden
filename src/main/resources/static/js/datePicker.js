@@ -11,7 +11,6 @@ $(function() {
 
     $('#reportrange').daterangepicker({
         showDropdowns: true,
-        minYear: 2010,
         "autoApply": true,
         autoUpdateInput: false,
         "linkedCalendars": false,
