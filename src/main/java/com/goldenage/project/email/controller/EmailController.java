@@ -35,31 +35,25 @@ public class EmailController {
     @ResponseBody
     public Object matchIdEmail(@RequestBody HashMap<String, String> adminMap) throws MessagingException, UnsupportedEncodingException {
 
-        System.out.println("adminMap : " + adminMap);
-
         String id = adminMap.get("id");
         String email = adminMap.get("email");
 
         AdminDTO ckEmail = emailService.selectEmail(id);
-        System.out.println("ckEmail : " + ckEmail);
 
         int result = 0;
 
         if(ckEmail != null){
 
             String dbEmail = ckEmail.getAdminEmail();
-            System.out.println("dbEmail : " + dbEmail);
 
             if(email.equals(dbEmail)) {
 
                 //인증번호생성
                 AuthKey authKey = new AuthKey();
                 String authNum = authKey.makeAuthKey();
-                System.out.println("authNum : " + authNum);
 
                 //인증번호 업데이트(id, email 기준)
                 result = emailService.updateAuthNum(id, dbEmail, authNum);
-                System.out.println("result udateAuthNum : " + result);
 
                 //인증메일 발송
                 if(result > 0) {
@@ -87,8 +81,6 @@ public class EmailController {
             result = 0;
         }
 
-        System.out.println("result : " + result);
-
         Map<String, Object> resultAjax = new HashMap<>();
         resultAjax.put("result", result);
 
@@ -98,8 +90,6 @@ public class EmailController {
     @PostMapping("/authNum")
     @ResponseBody
     public Object matchAuthNum(@RequestBody HashMap<String, String> adminMap){
-
-        System.out.println("adminMap" + adminMap);
 
         String id = adminMap.get("id");
         String email = adminMap.get("email");
@@ -122,8 +112,6 @@ public class EmailController {
                 result = 2;
             }
         }
-
-        System.out.println("resuㅣt : " + result);
 
         Map<String, Object> resultAjax = new HashMap<>();
         resultAjax.put("result", result);
