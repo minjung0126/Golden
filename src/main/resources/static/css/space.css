@@ -111,3 +111,26 @@ table td {
         width: 25%;
     }
 }
+@media (min-width: 1024px) {
+    .carousel-item img{
+        height: 500px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .carousel-item img{
+        height: 350px;
+    }
+}
+
+@media (max-width: 768px) {
+    .carousel-item img{
+        height: 300px;
+    }
+}
+
+@media (max-width: 425px) {
+    .carousel-item img{
+        height: 180px;
+    }
+}

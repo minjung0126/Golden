@@ -37,5 +37,5 @@ public interface SpaceMapper {
     int insertSpacePho(SpacePhoDTO spacePhoto);
 
 
-    SpacePhoDTO selectSpacePhoto(int spaceNum);
+    SpacePhoDTO selectSpacePhoto(int spaceFileNum);
 }

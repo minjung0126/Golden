@@ -159,9 +159,9 @@ public class SpaceServiceImpl implements SpaceService{
     }
 
     @Override
-    public SpacePhoDTO selectPhoto(int spaceNum) {
+    public SpacePhoDTO selectPhoto(int spaceFileNum) {
 
-        SpacePhoDTO selectSpacePhoto = spaceMapper.selectSpacePhoto(spaceNum);
+        SpacePhoDTO selectSpacePhoto = spaceMapper.selectSpacePhoto(spaceFileNum);
 
         return selectSpacePhoto;
     }
