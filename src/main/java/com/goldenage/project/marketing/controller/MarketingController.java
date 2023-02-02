@@ -29,7 +29,6 @@ public class MarketingController {
     private final Logger log = LoggerFactory.getLogger(this.getClass());
     private final MarketingServiceImpl marketingService;
 
-
     @Autowired
     public MarketingController(MarketingServiceImpl marketingService){
 
