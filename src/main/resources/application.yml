@@ -11,9 +11,9 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://3.39.108.99:54145/GOLDENAGE
-    username: GOLDENAGE
-    password: C##GOLDENAGE
+    url: jdbc:mysql://project-db.chyiflkx5kyt.ap-northeast-2.rds.amazonaws.com:3306/GOLDENAGE
+    username: PROJECT
+    password: C##PROJECT
   devtools:
     livereload:
       enabled: true
