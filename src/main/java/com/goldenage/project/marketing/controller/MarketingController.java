@@ -96,29 +96,30 @@ public class MarketingController {
         String ext = "";
         String changeName = "";
 
+        // 공연에 등록할 이미지가 있는 경우
         if(file.getSize() > 0) {
             originFileName = file.getOriginalFilename();
             ext = originFileName.substring(originFileName.lastIndexOf("."));
             changeName = UUID.randomUUID().toString().replace("-",  "");
-
 
             marketing.setMkOriMain(originFileName);
             marketing.setMkFileMain(changeName + ext);
 
             System.out.println("다시출력 : " + marketing);
 
-            // 공연 등록
+            // 공연 등록 (공연명, 공연시작&종료일, 장소 등 기본 정보와 이미지 파일 등록)
             marketingService.insertMkInfo(marketing);
 
-
             try {
-
                 file.transferTo(new File(filePath + mkdir.separator + changeName + ext));
             } catch (IOException e) {
                 e.printStackTrace();
                 new File(filePath + mkdir.separator + changeName + ext).delete();
             }
-        } else {
+
+        }
+        // 공연에 등록할 이미지가 없는 경우 (공연명, 공연시작&종료일, 장소 등 기본 정보만 등록)
+        else {
             marketingService.insertMkInfo(marketing);
         }
 
