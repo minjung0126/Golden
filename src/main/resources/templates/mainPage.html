@@ -284,7 +284,7 @@
           </div>
         </div>
       <div th:each="marketing : ${ marketingList }" class="col-lg-4 col-md-6" style="height: 141.4%;">
-        <div class="blog-card">
+        <div class="blog-card marketing">
           <a href="#" class="justify-content-center d-flex align-items-center"><h5 class="text-white thumbnailtxt p-auto d-flex align-items-center">
             <input type="hidden" id="num" th:value="${ marketing.mkNum }"/>
             <b th:text="${ marketing.mkName }">연극 &lt;헤르츠클란&gt;</b></h5><img th:src="'/upload/marketing/' + ${ marketing.mkFileMain }" src="/images/marketing/p1.jpg" alt="" class="blog-thumbnail">
